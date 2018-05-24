@@ -23,25 +23,25 @@ Gatekeeper uses the [AWS_PROFILE] environment variable
 
 ### Commands
 
-**ls** List secrets in a specific region:
+List secrets in a specific region: [**ls**]
 
 ```
 gatekeeper ls --region eu-west-2
 ```
 
-**get** Get the value of a secret:
+Get the value of a secret: [**get**]
 
 ```
 gatekeeper get --secret nameofsecret --region eu-west-2
 ```
 
-**add** Add a new secret:
+Add a new secret: [**add**]
 
 ```
 gatekeeper add --name nameofsecret --region eu-west-2 --description "exampledescription" --value "{\"username\":\"foo\",\"password\":\"bar\"}"
 ```
 
-**update** Update a secret:
+Update a secret: [**update**]
 
 ```
 gatekeeper update --secret nameofsecret --region eu-west-2 --value "{\"username\":\"foo\",\"password\":\"foobar\"}"
@@ -75,3 +75,7 @@ $ docker build -t gatekeeper .
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [cobra]: https://github.com/spf13/cobra
 [AWS_PROFILE]: https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
+[**ls**]: https://github.com/axoe/gatekeeper#commands
+[**get**]: https://github.com/axoe/gatekeeper#commands
+[**add**]: https://github.com/axoe/gatekeeper#commands
+[**update**]: https://github.com/axoe/gatekeeper#commands
