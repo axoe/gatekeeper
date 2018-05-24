@@ -36,34 +36,39 @@ var listCmd = &cobra.Command{
 	AWS Identity and Access Management (IAM) policies.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		r := cmd.Flag("region").Value.String()
-		svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(r))
-		input := &secretsmanager.ListSecretsInput{}
-
-		result, err := svc.ListSecrets(input)
-		if err != nil {
-			if aerr, ok := err.(awserr.Error); ok {
-				switch aerr.Code() {
-				case secretsmanager.ErrCodeInvalidParameterException:
-					fmt.Println(secretsmanager.ErrCodeInvalidParameterException, aerr.Error())
-				case secretsmanager.ErrCodeInvalidNextTokenException:
-					fmt.Println(secretsmanager.ErrCodeInvalidNextTokenException, aerr.Error())
-				case secretsmanager.ErrCodeInternalServiceError:
-					fmt.Println(secretsmanager.ErrCodeInternalServiceError, aerr.Error())
-				default:
-					fmt.Println(aerr.Error())
-				}
-			} else {
-				// Print the error, cast err to awserr.Error to get the Code and
-				// Message from an error.
-				fmt.Println(err.Error())
-			}
-			return
-		}
-
-		fmt.Println(result)
+		listSecrets(cmd)
 
 	},
+}
+
+func listSecrets(cmd *cobra.Command) {
+	r := cmd.Flag("region").Value.String()
+	svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(r))
+	input := &secretsmanager.ListSecretsInput{}
+
+	result, err := svc.ListSecrets(input)
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case secretsmanager.ErrCodeInvalidParameterException:
+				fmt.Println(secretsmanager.ErrCodeInvalidParameterException, aerr.Error())
+			case secretsmanager.ErrCodeInvalidNextTokenException:
+				fmt.Println(secretsmanager.ErrCodeInvalidNextTokenException, aerr.Error())
+			case secretsmanager.ErrCodeInternalServiceError:
+				fmt.Println(secretsmanager.ErrCodeInternalServiceError, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+
 }
 
 func init() {
