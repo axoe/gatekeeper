@@ -38,15 +38,15 @@ If you want to build Gatekeeper right away there are two options:
 ##### You have a working [Go environment].
 
 ```
-$ go get -d axeo/gatekeeper
-$ cd $GOPATH/src/axeo/gatekeeper
+$ go get -d axoe/gatekeeper
+$ cd $GOPATH/src/axoe/gatekeeper
 $ gatekeeper
 ```
 
 ##### You have a working [Docker environment].
 
 ```
-$ git clone https://github.com/axeo/gatekeeper
+$ git clone https://github.com/axoe/gatekeeper
 $ cd gatekeeper
 $ docker build -t gatekeeper .
 ```
