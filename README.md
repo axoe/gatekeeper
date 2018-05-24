@@ -1,4 +1,4 @@
-<img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="400">
+<img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="600">
 
 ----
 
