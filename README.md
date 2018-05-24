@@ -1,4 +1,6 @@
-<img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="600">
+# GΛTEKEEPER
+
+<img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="100">
 
 ----
 
