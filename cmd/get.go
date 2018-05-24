@@ -37,12 +37,12 @@ var getCmd = &cobra.Command{
 	AWS Identity and Access Management (IAM) policies.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		getSecrets(cmd)
+		getSecret(cmd)
 
 	},
 }
 
-func getSecrets(cmd *cobra.Command) {
+func getSecret(cmd *cobra.Command) {
 
 	r := cmd.Flag("region").Value.String()
 	s := cmd.Flag("secret").Value.String()
