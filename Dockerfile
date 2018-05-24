@@ -9,4 +9,3 @@ FROM alpine:3.7
 COPY --from=build /go/bin/gatekeeper /bin/gatekeeper
 WORKDIR /bin
 #ENTRYPOINT ["/bin/gatekeeper"]
-
