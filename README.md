@@ -52,8 +52,8 @@ If you want to build Gatekeeper right away there are two options:
 ##### You have a working [Go environment].
 
 ```
-$ go get -d axoe/gatekeeper
-$ cd $GOPATH/src/axoe/gatekeeper
+$ go get -d github.com/axoe/gatekeeper
+$ cd $GOPATH/src/github.com/axoe/gatekeeper
 $ gatekeeper
 ```
 
