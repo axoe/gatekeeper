@@ -18,6 +18,7 @@ Gatekeeper is built on [cobra] and utilises a structure of commands, arguments &
 ### Requirements
 
 Gatekeeper uses the AWS_PROFILE environment variable
+
 ----
 
 ### Commands
@@ -37,7 +38,7 @@ gatekeeper get --secret nameofsecret --region eu-west-2
 Add a new secret:
 
 ```
-gatekeeper add --name nameofsecret --region eu-west-2 --description "sampledescription" --value "{\"username\":\"foo\",\"password\":\"bar\"}"
+gatekeeper add --name nameofsecret --region eu-west-2 --description "exampledescription" --value "{\"username\":\"foo\",\"password\":\"bar\"}"
 ```
 
 ## To start developing Gatekeeper
