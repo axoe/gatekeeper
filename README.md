@@ -41,6 +41,12 @@ Add a new secret:
 gatekeeper add --name nameofsecret --region eu-west-2 --description "exampledescription" --value "{\"username\":\"foo\",\"password\":\"bar\"}"
 ```
 
+Update a secret:
+
+```
+gatekeeper update --secret nameofsecret --region eu-west-2 --value "{\"username\":\"foo\",\"password\":\"foobar\"}"
+```
+
 ## To start developing Gatekeeper
 
 This repository hosts all information about
