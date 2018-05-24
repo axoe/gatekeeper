@@ -1,11 +1,10 @@
-FROM golang:latest as builder
-WORKDIR /go/src/github.com/axoe/gatekeeper
-RUN go get -d -v github.com/axoe/gatekeeper
-COPY main.go  .
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gatekeeper .
+FROM golang:1.9.0-alpine3.6 AS build
+RUN apk add --no-cache git
+ADD . /go/src/github.com/axoe/gatekeeper/
+RUN go get ./...
+WORKDIR /go/src/github.com/axoe/gatekeeper/
+RUN go install
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-WORKDIR /root/
-COPY --from=builder /go/src/github.com/axoe/gatekeeper/gatekeeper .
-CMD ["./gatekeeper"]
+FROM alpine:3.6
+COPY --from=build /go/bin/gatekeeper /bin/gatekeeper
+WORKDIR /go/src/github.com/axoe/gatekeeper/
