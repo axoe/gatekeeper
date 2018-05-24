@@ -26,8 +26,8 @@ import (
 
 // getCmd represents the get command
 
-var secret string
-var getRegion string
+var gSecret string
+var gRegion string
 var getCmd = &cobra.Command{
 	Use:   "get",
 	Short: "Get the value of a secret stored AWS Secrets Manager",
@@ -44,11 +44,11 @@ var getCmd = &cobra.Command{
 
 func getSecret(cmd *cobra.Command) {
 
-	r := cmd.Flag("region").Value.String()
-	s := cmd.Flag("secret").Value.String()
-	svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(r))
+	region := cmd.Flag("region").Value.String()
+	secret := cmd.Flag("secret").Value.String()
+	svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(region))
 	input := &secretsmanager.GetSecretValueInput{
-		SecretId:     aws.String(s),
+		SecretId:     aws.String(secret),
 		VersionStage: aws.String("AWSCURRENT"),
 	}
 
@@ -84,7 +84,7 @@ func getSecret(cmd *cobra.Command) {
 
 func init() {
 
-	getCmd.Flags().StringVarP(&getRegion, "region", "r", "", "The region the secret is stored in")
-	getCmd.Flags().StringVarP(&secret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
+	getCmd.Flags().StringVarP(&gRegion, "region", "r", "", "The region the secret is stored in")
+	getCmd.Flags().StringVarP(&gSecret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
 	rootCmd.AddCommand(getCmd)
 }
