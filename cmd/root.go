@@ -28,13 +28,11 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "gatekeeper",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "Gatekeeper controls secrets in AWS Secrets Manager",
+	Long: `Gatekeeper is an open source system for interacting with secrets in AWS Secrets Manager.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Access to secrets is granted via fine-grained 
+	AWS Identity and Access Management (IAM) policies.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
