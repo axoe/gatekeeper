@@ -17,7 +17,7 @@ Gatekeeper is built on [cobra] and utilises a structure of commands, arguments &
 
 ### Requirements
 
-Gatekeeper uses the AWS_PROFILE environment variable
+Gatekeeper uses the [AWS_PROFILE] environment variable
 
 ----
 
@@ -68,3 +68,4 @@ $ docker build -t gatekeeper .
 [secrets]: https://aws.amazon.com/secrets-manager/features/
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [cobra]: https://github.com/spf13/cobra
+[AWS_PROFILE]: https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
