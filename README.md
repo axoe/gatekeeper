@@ -6,7 +6,7 @@
 
 ----
 
-Gatekeeper is an open source system for managing [secrets] in [AWS Secrets Manager]; providing basic mechanisms for creation, maintenance,
+Gatekeeper is an open source system for interacting with [secrets] in [AWS Secrets Manager]; providing basic mechanisms for creation,
 and rotation of secrets.
 
 ## To start using Gatekeeper
