@@ -7,13 +7,13 @@ and rotation of secrets.
 
 ## To start using Gatekeeper
 
-##### Overview
+### Overview
 
 Gatekeeper is built on [cobra] and utilises a structure of commands, arguments & flags. It supports Fully POSIX-compliant flags (including short & long versions)
 
 ----
 
-##### Commands
+### Commands
 
 List secrets in a specific region:
 
