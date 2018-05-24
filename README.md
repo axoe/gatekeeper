@@ -1,5 +1,7 @@
 # GΛTEKEEPER
 
+[![Join the chat at https://gitter.im/gatekeeper-talk/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 <img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="100">
 
 ----
