@@ -15,6 +15,9 @@ and rotation of secrets.
 
 Gatekeeper is built on [cobra] and utilises a structure of commands, arguments & flags. It supports Fully POSIX-compliant flags (including short & long versions)
 
+### Requirements
+
+Gatekeeper uses the AWS_PROFILE environment variable
 ----
 
 ### Commands
