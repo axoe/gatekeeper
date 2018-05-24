@@ -34,6 +34,12 @@ Get the value of a secret:
 gatekeeper get --secret nameofsecret --region eu-west-2
 ```
 
+Add a new secret:
+
+```
+gatekeeper add --name nameofsecret --region eu-west-2 --description "sampledescription" --value "{\"username\":\"foo\",\"password\":\"bar\"}"
+```
+
 ## To start developing Gatekeeper
 
 This repository hosts all information about
