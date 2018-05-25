@@ -83,7 +83,7 @@ when the container starts
 $ docker run -it gatekeeper
 ```
 
-##### Export AWS [AWS access keys]:
+##### Export [AWS ACCESS KEYS]:
 
 Once you are inside the container you need to export your [AWS ACCESS KEYS]
 
