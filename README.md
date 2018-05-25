@@ -85,7 +85,7 @@ $ docker run -it gatekeeper
 
 ##### Export AWS [AWS access keys]:
 
-Once you are inside the container you need to export your [AWS access keys]
+Once you are inside the container you need to export your [AWS ACCESS KEYS]
 
 ```
 /# export AWS_ACCESS_KEY_ID=AKIAXXXXXXXXXX
@@ -102,4 +102,4 @@ Once you are inside the container you need to export your [AWS access keys]
 [**get**]: https://github.com/axoe/gatekeeper#commands
 [**add**]: https://github.com/axoe/gatekeeper#commands
 [**update**]: https://github.com/axoe/gatekeeper#commands
-[AWS access keys]: https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
+[AWS ACCESS KEYS]: https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
