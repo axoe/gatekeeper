@@ -72,7 +72,7 @@ $ cd gatekeeper
 $ docker build -t gatekeeper .
 ```
 
-## To use Gatekeeper
+## Run Gatekeeper in Docker
 
 By default the Docker image does not have an ENTRYPOINT set.
 Uncomment the last line on the Dockerfile to launch Gatekeeper
