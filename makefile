@@ -3,7 +3,7 @@ GO=$(shell which go)
 GOINSTALL=$(GO) install
 GOCLEAN=$(GO) clean
 GOGET=$(GO) get
-EXENAME=main
+EXENAME=cmd
 
 export GOPATH=$(CURDIR)/output
 
