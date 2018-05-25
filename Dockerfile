@@ -13,4 +13,4 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 COPY --from=build /go/bin/gatekeeper $GOPATH/bin
 
 # Comment out the below line if you wish to use Gatekeeper via the shell in CI
-ENTRYPOINT ["gatekeeper"]
+#ENTRYPOINT ["gatekeeper"]
