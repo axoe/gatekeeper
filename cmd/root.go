@@ -29,7 +29,10 @@ var cfgFile string
 var rootCmd = &cobra.Command{
 	Use:   "gatekeeper",
 	Short: "Gatekeeper controls secrets in AWS Secrets Manager",
-	Long: `Gatekeeper is an open source system for interacting with secrets in AWS Secrets Manager.
+	Long: `
+
+	GΛTEKEEPER is an open source system for interacting 
+	with secrets in AWS Secrets Manager.
 
 	Access to secrets is granted via fine-grained 
 	AWS Identity and Access Management (IAM) policies.`,
