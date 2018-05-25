@@ -65,11 +65,24 @@ $ gatekeeper
 
 ##### You have a working [Docker environment].
 
+By default the Docker image does not have an ENTRYPOINT set.
+Uncomment the last line on the Dockerfile to launch Gatekeeper
+when the container starts
+
+**Build:**
+
 ```
 $ git clone https://github.com/axoe/gatekeeper
 $ cd gatekeeper
 $ docker build -t gatekeeper .
 ```
+
+**Run:**
+
+```
+$ docker run -it gatekeeper
+```
+
 
 [secrets]: https://aws.amazon.com/secrets-manager/features/
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
