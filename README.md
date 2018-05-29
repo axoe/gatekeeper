@@ -108,4 +108,5 @@ Once you are inside the container you need to export your [AWS ACCESS KEYS]
 [**get**]: https://github.com/axoe/gatekeeper#commands
 [**add**]: https://github.com/axoe/gatekeeper#commands
 [**update**]: https://github.com/axoe/gatekeeper#commands
+[**del**]: https://github.com/axoe/gatekeeper#commands
 [AWS ACCESS KEYS]: https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
