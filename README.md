@@ -47,6 +47,12 @@ gatekeeper add --name nameofsecret --region eu-west-2 --description "exampledesc
 gatekeeper update --secret nameofsecret --region eu-west-2 --value "{\"username\":\"foo\",\"password\":\"foobar\"}"
 ```
 
+[**del**] - Delete a secret:
+
+```
+gatekeeper del --secret nameofsecret --region eu-west-2
+```
+
 ## To start developing Gatekeeper
 
 This repository hosts all information about
