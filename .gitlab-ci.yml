@@ -1,0 +1,53 @@
+image: docker:git
+services:
+  - docker:dind
+
+stages:
+  - release
+
+before_script:
+  # Setup
+  - export LC_PJ=$(echo "$CI_PROJECT_NAME" | awk '{printf tolower($0)}')
+  # Auth
+  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+  - export AWS_REGION=$AWS_REGION
+  - export RELEASE_BUCKET="dl.tusker.io"
+
+release:
+  stage: release
+  image: ajwoss/avion:latest
+  script:
+    # Setup
+    - export VERSION=0.1.0
+    - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
+    # Linux
+    - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_linux_amd64 main.go
+    - 7z a -tzip ${LC_PJ}_${VERSION}_linux_amd64.zip ${LC_PJ}_${VERSION}_linux_amd64
+    - export LINUX_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_linux_amd64.zip)
+    - aws s3 cp ${LC_PJ}_${VERSION}_linux_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
+    # Darwin
+    - GOOS=darwin GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_darwin_amd64 main.go
+    - 7z a -tzip ${LC_PJ}_${VERSION}_darwin_amd64.zip ${LC_PJ}_${VERSION}_darwin_amd64
+    - export DARWIN_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_darwin_amd64.zip)
+    - aws s3 cp ${LC_PJ}_${VERSION}_darwin_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
+    # Windows
+    - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_windows_amd64.exe main.go
+    - 7z a -tzip ${LC_PJ}_${VERSION}_windows_amd64.zip ${LC_PJ}_${VERSION}_windows_amd64.exe
+    - export WINDOWS_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_windows_amd64.zip)
+    - aws s3 cp ${LC_PJ}_${VERSION}_windows_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
+    # Publish Checksums
+    - export LINUX=$(echo $LINUX_SHA ${LC_PJ}_${VERSION}_linux_amd64.zip)
+    - export DARWIN=$(echo $DARWIN_SHA ${LC_PJ}_${VERSION}_darwin_amd64.zip)
+    - export WINDOWS=$(echo $WINDOWS_SHA ${LC_PJ}_${VERSION}_windows_amd64.zip)
+    - echo $LINUX >> ${LC_PJ}_${VERSION}_SHA256SUMS
+    - echo $DARWIN >> ${LC_PJ}_${VERSION}_SHA256SUMS
+    - echo $WINDOWS >> ${LC_PJ}_${VERSION}_SHA256SUMS
+    - cat ${LC_PJ}_${VERSION}_SHA256SUMS
+    - aws s3 cp ${LC_PJ}_${VERSION}_SHA256SUMS s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
+  artifacts:
+    untracked: true
+    paths:
+    - deploy/
+  tags:
+    - docker
