@@ -42,8 +42,8 @@ var listCmd = &cobra.Command{
 }
 
 func listSecrets(cmd *cobra.Command) {
-	r := cmd.Flag("region").Value.String()
-	svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(r))
+	region := cmd.Flag("region").Value.String()
+	svc := secretsmanager.New(session.New(), aws.NewConfig().WithRegion(region))
 	input := &secretsmanager.ListSecretsInput{}
 
 	result, err := svc.ListSecrets(input)
