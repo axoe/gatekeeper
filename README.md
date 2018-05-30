@@ -5,7 +5,7 @@
 <img src="https://github.com/axoe/gatekeeper/blob/master/logo/logo.png" width="100">
 
 ----
-[gatekeeper.github.io]
+## [gatekeeper.github.io]
 
 Gatekeeper is an open source system for interacting with [secrets] in [AWS Secrets Manager]; providing basic mechanisms for creation,
 and rotation of secrets.
