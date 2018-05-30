@@ -21,9 +21,8 @@ release:
     # Setup
     - export VERSION=0.1.0
     - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
-    - cd $GOPATH/src
-    - go get ./...
-    - cd /tmp
+    - export GOBIN=/go/bin
+    - go install /tmp/main.go
     # Linuxcd 
     - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_linux_amd64 main.go
     - 7z a -tzip ${LC_PJ}_${VERSION}_linux_amd64.zip ${LC_PJ}_${VERSION}_linux_amd64
