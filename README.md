@@ -1,4 +1,4 @@
-# GΛTEKEEPER | [gatekeeper.github.io]
+# [GΛTEKEEPER]
 
 [![Join the chat at https://gitter.im/gatekeeper-talk/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gatekeeper-talk/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -99,7 +99,7 @@ Once you are inside the container you need to export your [AWS ACCESS KEYS]
 /# gatekeeper ls --region eu-west-2
 ```
 
-[gatekeeper.github.io]: https://axoe.github.io/gatekeeper/
+[GΛTEKEEPER]: https://axoe.github.io/gatekeeper/
 [secrets]: https://aws.amazon.com/secrets-manager/features/
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [cobra]: https://github.com/spf13/cobra
