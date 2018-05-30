@@ -13,7 +13,7 @@ and rotation of secrets.
 
 ### [Download Gatekeeper] - Linux, MacOS and Windows
 
-Please download the proper package for your operating system and architecture. You can find the SHA256 checksums for Gatekeeper [here] and you can verify the checksums signature file which has been signed using AXOE's GPG key. 
+Please download the proper package for your operating system and architecture. You can find the [SHA256 checksums] for Gatekeeper [here] and you can verify the checksums signature file which has been signed using AXOE's GPG key. 
 
 ### Overview
 
@@ -105,6 +105,7 @@ Once you are inside the container you need to export your [AWS ACCESS KEYS]
 
 [Download Gatekeeper]: https://axoe.github.io/gatekeeper/
 [here]: http://dl.tusker.io/gatekeeper/gatekeeper_0.1.0_SHA256SUMS
+[SHA256 checksums]: http://dl.tusker.io/gatekeeper/gatekeeper_0.1.0_SHA256SUMS
 [secrets]: https://aws.amazon.com/secrets-manager/features/
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [cobra]: https://github.com/spf13/cobra
