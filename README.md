@@ -1,4 +1,4 @@
-# [GΛTEKEEPER]
+# GΛTEKEEPER
 
 [![Join the chat at https://gitter.im/gatekeeper-talk/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gatekeeper-talk/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -10,6 +10,16 @@ Gatekeeper is an open source system for interacting with [secrets] in [AWS Secre
 and rotation of secrets.
 
 ## To start using Gatekeeper
+
+### [Download Gatekeeper] - Linux, MacOS and Windows
+
+Download the latest version of Gatekeeper
+
+```
+cd /Downloads
+unzip gatekeeper_0.1.0_linux_amd64.zip -d /bin && mv /bin/gatekeeper_0.1.0_linux_amd64 /bin/gatekeeper
+```
+
 
 ### Overview
 
@@ -99,7 +109,7 @@ Once you are inside the container you need to export your [AWS ACCESS KEYS]
 /# gatekeeper ls --region eu-west-2
 ```
 
-[GΛTEKEEPER]: https://axoe.github.io/gatekeeper/
+[Download Gatekeeper]: https://axoe.github.io/gatekeeper/
 [secrets]: https://aws.amazon.com/secrets-manager/features/
 [AWS Secrets Manager]: https://aws.amazon.com/secrets-manager/
 [cobra]: https://github.com/spf13/cobra
