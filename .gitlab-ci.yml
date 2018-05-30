@@ -21,7 +21,7 @@ release:
     # Setup
     - export VERSION=0.1.0
     - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
-    - cd $GOPATH
+    - cd $GOPATH/src
     - go get ./...
     - cd /tmp
     # Linuxcd 
