@@ -13,5 +13,9 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 COPY --from=golang /go/bin/gatekeeper $GOPATH/bin
 
+# Uncomment and populate to add AWS Keys to the ENV on
+#ENV AWS_ACCESS_KEY_ID=AKIAXXXX
+#ENV AWS_SECRET_ACCESS_KEY=XxXxXXX
+
 # Uncomment the below line if you want gatekeeper to start on launch
 #ENTRYPOINT ["gatekeeper"]
