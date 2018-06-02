@@ -12,31 +12,31 @@ before_script:
   - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
   - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
   - export AWS_REGION=$AWS_REGION
-  - export RELEASE_BUCKET="dl.tusker.io"
+  - export RELEASE_BUCKET=$RELEASE_BUCKET
 
 release:
   stage: release
   image: ajwoss/avion:latest
   script:
     # Setup
-    - export VERSION=0.1.0
+    - export VERSION=$(cat app.json | jq -r '.version')
     - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     - export GOBIN=/go/bin
-    - go install /tmp/main.go
-    # Linuxcd 
+    - go get ./...
+    # Linux
     - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_linux_amd64 main.go
     - 7z a -tzip ${LC_PJ}_${VERSION}_linux_amd64.zip ${LC_PJ}_${VERSION}_linux_amd64
-    - export LINUX_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_linux_amd64.zip)
+    - export LINUX_SHA=$(checksum -f ${LC_PJ}_${VERSION}_linux_amd64.zip)
     - aws s3 cp ${LC_PJ}_${VERSION}_linux_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     # Darwin
     - GOOS=darwin GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_darwin_amd64 main.go
     - 7z a -tzip ${LC_PJ}_${VERSION}_darwin_amd64.zip ${LC_PJ}_${VERSION}_darwin_amd64
-    - export DARWIN_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_darwin_amd64.zip)
+    - export DARWIN_SHA=$(checksum -f ${LC_PJ}_${VERSION}_darwin_amd64.zip)
     - aws s3 cp ${LC_PJ}_${VERSION}_darwin_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     # Windows
     - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_windows_amd64.exe main.go
     - 7z a -tzip ${LC_PJ}_${VERSION}_windows_amd64.zip ${LC_PJ}_${VERSION}_windows_amd64.exe
-    - export WINDOWS_SHA=$(go run main.go -f ${LC_PJ}_${VERSION}_windows_amd64.zip)
+    - export WINDOWS_SHA=$(checksum -f ${LC_PJ}_${VERSION}_windows_amd64.zip)
     - aws s3 cp ${LC_PJ}_${VERSION}_windows_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     # Publish Checksums
     - export LINUX=$(echo $LINUX_SHA ${LC_PJ}_${VERSION}_linux_amd64.zip)
