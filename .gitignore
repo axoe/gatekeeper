@@ -32,3 +32,5 @@
 *.un~
 Session.vim
 .netrwhist
+
+make.sh
