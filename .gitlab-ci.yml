@@ -44,7 +44,6 @@ release:
     - export VERSION=$(cat app.json | jq -r '.version')
     - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     - export GOBIN=/go/bin
-    - cd $GOPATH/src
     - go get ./...
     # Linux
     - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_linux_amd64 main.go
