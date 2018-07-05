@@ -44,7 +44,7 @@ release:
     - export VERSION=$(cat app.json | jq -r '.version')
     - aws s3 rm --recursive s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     - export GOBIN=/go/bin
-    - cd $GOPATH/src
+    #- cd $GOPATH/src
     - go get ./...
     # Linux
     - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_linux_amd64 main.go
@@ -57,7 +57,7 @@ release:
     - export DARWIN_SHA=$(checksum -f ${LC_PJ}_${VERSION}_darwin_amd64.zip)
     - aws s3 cp ${LC_PJ}_${VERSION}_darwin_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
     # Windows
-    - GOOS=linux GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_windows_amd64.exe main.go
+    - GOOS=windows GOARCH=amd64 go build -o ${LC_PJ}_${VERSION}_windows_amd64.exe main.go
     - 7z a -tzip ${LC_PJ}_${VERSION}_windows_amd64.zip ${LC_PJ}_${VERSION}_windows_amd64.exe
     - export WINDOWS_SHA=$(checksum -f ${LC_PJ}_${VERSION}_windows_amd64.zip)
     - aws s3 cp ${LC_PJ}_${VERSION}_windows_amd64.zip s3://${RELEASE_BUCKET}/${LC_PJ}/${VERSION}/
