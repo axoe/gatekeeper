@@ -26,7 +26,6 @@ import (
 
 // listCmd represents the list command
 
-var region string
 var listCmd = &cobra.Command{
 	Use:   "ls",
 	Short: "List secrets stored AWS Secrets Manager",
@@ -72,6 +71,6 @@ func listSecrets(cmd *cobra.Command) {
 }
 
 func init() {
-	listCmd.Flags().StringVarP(&region, "region", "r", "", "The region the secret is stored in")
+	listCmd.Flags().StringVarP(&Region, "region", "r", "", "The region the secret is stored in")
 	rootCmd.AddCommand(listCmd)
 }

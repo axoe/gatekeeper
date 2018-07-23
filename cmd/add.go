@@ -26,10 +26,6 @@ import (
 
 // addCmd represents the create command
 
-var aName string
-var aRegion string
-var aValue string
-var aDescription string
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Add a new secret to AWS Secrets Manager",
@@ -93,9 +89,9 @@ func addSecret(cmd *cobra.Command) {
 
 func init() {
 
-	addCmd.Flags().StringVarP(&aRegion, "region", "r", "", "The region the secret is stored in")
-	addCmd.Flags().StringVarP(&aName, "name", "n", "", "The name of the secret")
-	addCmd.Flags().StringVarP(&aValue, "value", "v", "", "The value of the secret")
-	addCmd.Flags().StringVarP(&aDescription, "description", "d", "", "The description of the secret")
+	addCmd.Flags().StringVarP(&Region, "region", "r", "", "The region the secret is stored in")
+	addCmd.Flags().StringVarP(&Name, "name", "n", "", "The name of the secret")
+	addCmd.Flags().StringVarP(&Value, "value", "v", "", "The value of the secret")
+	addCmd.Flags().StringVarP(&Description, "description", "d", "", "The description of the secret")
 	rootCmd.AddCommand(addCmd)
 }

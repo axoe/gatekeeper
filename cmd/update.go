@@ -26,9 +26,6 @@ import (
 
 // updateCmd represents the update command
 
-var uRegion string
-var uSecret string
-var uValue string
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Update a secret in AWS Secrets Manager",
@@ -88,8 +85,8 @@ func updateSecret(cmd *cobra.Command) {
 
 func init() {
 
-	updateCmd.Flags().StringVarP(&uRegion, "region", "r", "", "The region the secret is stored in")
-	updateCmd.Flags().StringVarP(&uSecret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
-	updateCmd.Flags().StringVarP(&uValue, "value", "v", "", "The value of the secret")
+	updateCmd.Flags().StringVarP(&Region, "region", "r", "", "The region the secret is stored in")
+	updateCmd.Flags().StringVarP(&Secret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
+	updateCmd.Flags().StringVarP(&Value, "value", "v", "", "The value of the secret")
 	rootCmd.AddCommand(updateCmd)
 }

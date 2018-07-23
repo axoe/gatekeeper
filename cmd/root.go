@@ -23,6 +23,14 @@ import (
 	"github.com/spf13/viper"
 )
 
+var Secret string
+var Region string
+var Name string
+var Value string
+var Description string
+var Key string
+var All bool
+
 var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands

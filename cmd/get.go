@@ -27,11 +27,6 @@ import (
 
 // getCmd represents the get command
 
-var gSecret string
-var gRegion string
-var gKey string
-var gAll bool
-
 // var gKey string
 var getCmd = &cobra.Command{
 	Use:   "get",
@@ -43,14 +38,6 @@ var getCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		getSecret(cmd)
 	},
-}
-
-func init() {
-	getCmd.Flags().StringVarP(&gRegion, "region", "r", "", "The region the secret is stored in")
-	getCmd.Flags().StringVarP(&gSecret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
-	getCmd.Flags().BoolVarP(&gAll, "all", "a", false, "Display all details for secret")
-	getCmd.Flags().StringVarP(&gKey, "key", "k", "", "Key of item in secret string")
-	rootCmd.AddCommand(getCmd)
 }
 
 func getSecret(cmd *cobra.Command) {
@@ -93,7 +80,7 @@ func getSecret(cmd *cobra.Command) {
 }
 
 func displayResult(result *secretsmanager.GetSecretValueOutput, key string) {
-	if gAll {
+	if All {
 		fmt.Println(result)
 	} else {
 		var secretResult map[string]interface{}
@@ -113,4 +100,12 @@ func displayResult(result *secretsmanager.GetSecretValueOutput, key string) {
 			fmt.Println(*result.SecretString)
 		}
 	}
+}
+
+func init() {
+	getCmd.Flags().StringVarP(&Region, "region", "r", "", "The region the secret is stored in")
+	getCmd.Flags().StringVarP(&Secret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
+	getCmd.Flags().BoolVarP(&All, "all", "a", false, "Display all details for secret")
+	getCmd.Flags().StringVarP(&Key, "key", "k", "", "Key of item in secret string")
+	rootCmd.AddCommand(getCmd)
 }

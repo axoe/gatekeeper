@@ -26,8 +26,6 @@ import (
 
 // delCmd represents the del command
 
-var dSecret string
-var dRegion string
 var delCmd = &cobra.Command{
 	Use:   "del",
 	Short: "Delete a secret from AWS Secrets Manager",
@@ -80,7 +78,7 @@ func delSecret(cmd *cobra.Command) {
 }
 
 func init() {
-	delCmd.Flags().StringVarP(&dRegion, "region", "r", "", "The region the secret is stored in")
-	delCmd.Flags().StringVarP(&dSecret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
+	delCmd.Flags().StringVarP(&Region, "region", "r", "", "The region the secret is stored in")
+	delCmd.Flags().StringVarP(&Secret, "secret", "s", "", "The name of the secret stored in AWS Secrets Manager")
 	rootCmd.AddCommand(delCmd)
 }
